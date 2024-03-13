@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata: 
+  labels: 
+    app.kubernetes.io/instance: wise-panther-python
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: wise-panther-python 
+  name: wise-panther-python
+spec:
+  port:
+    targetPort: 8081 
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: wise-panther-python
+    weight: 100 
